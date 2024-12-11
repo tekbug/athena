@@ -7,7 +7,7 @@ defmodule Athena.Repo.Migrations.CreateUserProfiles do
       add(:profile_picture_url, :string)
       add(:bio, :text)
       add(:interests, {:array, :string})
-      add(:socials, :maps)
+      add(:socials, :map)
       add(:preferences, :map)
 
       timestamps()

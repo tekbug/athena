@@ -3,7 +3,7 @@ defmodule Athena.Repo.Migrations.CreateClassroomResources do
 
   def change do
     create table(:classroom_resources) do
-      add(:classroom_id, references(:virtual_classrooms, on_delete: :delete_all), default: false)
+      add(:classroom_id, references(:virtual_classrooms, on_delete: :delete_all), null: false)
       add(:title, :string, null: false)
       add(:resource_type, :string, default: "book")
       add(:content_url, :string)
@@ -14,8 +14,8 @@ defmodule Athena.Repo.Migrations.CreateClassroomResources do
     create(unique_index(:classroom_resources, [:classroom_id]))
     create(index(:classroom_resources, [:title]))
 
-    check(
-      constraint(:classroom_resource, :resource_type_check,
+    create(
+      constraint(:classroom_resources, :resource_type_check,
         check: "resource_type IN ('book', 'article', 'video', 'lecture')"
       )
     )

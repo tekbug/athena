@@ -15,6 +15,6 @@ defmodule Athena.Repo.Migrations.CreateClassroomSessions do
       timestamps()
     end
 
-    create(unique_index(:classroom_session, [:classroom_id]))
+    create(unique_index(:classroom_sessions, [:classroom_id]))
   end
 end

@@ -20,6 +20,8 @@ defmodule Athena.Accounts.UserAccount do
     field(:login_count, :integer)
     field(:two_factor_enabled, :boolean, default: false)
     field(:two_factor_secret, :string)
+    field(:failed_login_attempts, :integer)
+    field(:last_failed_attempt_at, :utc_datetime)
     field(:timezone, :string)
 
     belongs_to(:user, Athena.Accounts.User)
@@ -41,6 +43,8 @@ defmodule Athena.Accounts.UserAccount do
       :login_count,
       :two_factor_enabled,
       :two_factor_secret,
+      :failed_login_attempts,
+      :last_failed_attempt_at,
       :timezone,
       :user_id,
       :institution_id
@@ -53,7 +57,7 @@ defmodule Athena.Accounts.UserAccount do
   defp put_password_hash(
          %Ecto.Changeset{valid?: true, changes: %{password: password}} = changeset
        ) do
-    put_change(changeset, :password_hash, Bcrypt.hash_pwd_salt(password))
+    put_change(changeset, :password_hash, Argon2.hash_pwd_salt(password))
   end
 
   defp put_password_hash(changeset), do: changeset

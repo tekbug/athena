@@ -5,7 +5,7 @@ defmodule Athena.Assessments.QuizQuestion do
   schema "quiz_questions" do
     field(:question_text, :string)
     field(:question_type, Ecto.Enum, values: [:choice, :writing], default: :choice)
-    field(:points, :float)
+    field(:points, :decimal)
     field(:order_index, :integer)
 
     belongs_to(:quiz, Athena.Assessments.Quiz)

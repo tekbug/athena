@@ -4,7 +4,7 @@ defmodule Athena.Repo.Migrations.CreateUserAccounts do
   def change do
     create table(:user_accounts) do
       add(:user_id, references(:users, on_delete: :delete_all), null: false)
-      add(:institution_id, references(:institutions, on_delete: :nulify_all), null: false)
+      add(:institution_id, references(:institutions, on_delete: :nilify_all), null: false)
       add(:email, :string, null: false)
       add(:password_hash, :string, null: false)
       add(:username, :string, null: false)

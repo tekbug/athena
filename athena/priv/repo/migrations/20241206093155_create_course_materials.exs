@@ -24,7 +24,7 @@ defmodule Athena.Repo.Migrations.CreateCourseMaterials do
 
     create(
       constraint(:course_materials, :resource_type_check,
-        check: "resource_type IN ('book', 'video', 'article')"
+        check: "material_type IN ('book', 'video', 'article')"
       )
     )
   end

@@ -32,6 +32,9 @@ defmodule Athena.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:guardian, "~> 2.3"},
+      {:argon2_elixir, "~> 3.0"},
+      {:bodyguard, "~> 2.4"},
       {:bcrypt_elixir, "~> 3.2.0"},
       {:cors_plug, "~> 3.0"},
       {:phoenix, "~> 1.7.14"},
